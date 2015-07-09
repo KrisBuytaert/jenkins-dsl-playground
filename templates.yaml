@@ -1,0 +1,28 @@
+- job-template:
+    name: '{name}-compile'
+
+
+- job-template:
+    name: '{name}-unittest'
+
+
+
+- job-template:
+    name: '{name}-package'
+
+
+
+- job-template:
+    name: '{name}-repoupload'
+
+
+- job-template:
+    name: '{name}-hostupload'
+
+
+- job-template:
+    name: '{name}-install'
+
+
+- job-template:
+    name: '{name}-sanity'

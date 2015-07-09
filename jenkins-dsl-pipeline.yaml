@@ -1,0 +1,56 @@
+- project:
+    name: Jenkins-DSL-Builder
+    jobs:
+      - jenkins-dsl-checkout:
+      - jenkins-dsl-validate:
+      - jenkins-dsl-update:
+    
+- job:
+    name: jenkins-dsl-checkout
+    project-type: freestyle
+    quiet-period: 5
+    scm:
+      - jenkins-dsl-playground
+    triggers:
+      - pollscm: "H/1 * * * *"
+    publishers:
+      - archive:
+          artifacts: '**'
+          fingerprint: true
+      - trigger:
+          project: 'jenkins-dsl-validate'
+
+
+- scm:
+    name: jenkins-dsl-playground
+    scm:
+      - git:
+         url: https://github.com/KrisBuytaert/jenkins-dsl-playground.git
+         branches:
+          - origin/master
+
+- job:
+    name: jenkins-dsl-validate
+    project-type: freestyle
+    quite-period: 0
+    builders:
+      - copyartifact:
+          project: jenkins-dsl-checkout
+          filter: "**"
+          which-build: upstream-build
+      - shell: ./validate_yaml.sh
+    publishers:
+      - trigger:
+          project: 'jenkins-dsl-update'
+
+- job:
+    name: jenkins-dsl-update
+    project-type: freestyle
+    quite-period: 0
+    builders:
+      - copyartifact:
+          project: jenkins-dsl-checkout
+          filter: "**"
+          which-build: upstream-build
+      - shell: jenkins-jobs update ./
+

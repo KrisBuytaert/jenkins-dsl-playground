@@ -1,0 +1,14 @@
+- project:
+    name: your-app
+    jobs:
+      - '{name}-checkout':
+          gitrepo: 'https://github.com/Inuits/jitsi-meet'
+      - '{name}-sintax':
+      - '{name}-compile':
+      - '{name}-unittest':
+      - '{name}-package':
+      - '{name}-repoupload':
+      - '{name}-hostupload':
+      - '{name}-install':
+      - '{name}-sanity':
+

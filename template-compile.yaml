@@ -1,14 +1,12 @@
 - job-template:
-    name: '{name}-sintax'
+    name: '{name}-compile'
     scm:
         - workspace:
             parent-job: '{name}-checkout'
             criteria: any
-
-
     publishers:
         - trigger:
-            project: '{name}-compile'
+            project: '{name}-unittest'
             threshold: SUCCESS
         - clone-workspace:
             criteria: "any"
@@ -16,28 +14,3 @@
             override-default-excludes: false
             workspace-glob: "**"
             workspace-exclude-glob: "**/*.tgz"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,8 +1,4 @@
 - job-template:
-    name: '{name}-compile'
-
-
-- job-template:
     name: '{name}-unittest'
 
 

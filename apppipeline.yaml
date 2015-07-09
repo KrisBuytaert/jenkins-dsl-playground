@@ -1,0 +1,69 @@
+- job-template:
+    name: '{name}-compile'
+
+
+- job-template:
+    name: '{name}-unittest'
+
+
+
+- job-template:
+    name: '{name}-package'
+
+
+
+- job-template:
+    name: '{name}-repoupload'
+
+
+- job-template:
+    name: '{name}-hostupload'
+
+
+- job-template:
+    name: '{name}-install'
+
+
+- job-template:
+    name: '{name}-sanity'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- project:
+    gitrepo: https://github.com/Inuits/jitsi-meet
+    name: our-app
+    jobs:
+      - '{name}-checkout':
+      - '{name}-sintax':
+      - '{name}-compile':
+      - '{name}-unittest':
+      - '{name}-package':
+      - '{name}-repoupload':
+      - '{name}-hostupload':
+      - '{name}-install':
+      - '{name}-sanity':
+     
+

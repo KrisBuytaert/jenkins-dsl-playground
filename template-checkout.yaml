@@ -1,0 +1,7 @@
+- job-template:
+    name: '{name}-checkout'
+    scm:
+        - git:
+            url: {gitrepo}
+            branches:
+                - origin/master

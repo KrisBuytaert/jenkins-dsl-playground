@@ -7,7 +7,13 @@
             branches:
                 - origin/master
     publishers:
-        - trigger-parameterized-builds:
-            - project: '{name}-sintax'
-              current-parameters: False
-              condition: stable
+        - trigger:
+            project: '{name}-sintax'
+            threshold: SUCCESS
+        - clone-workspace:
+            criteria: "any"
+            archive-method: "tar"
+            override-default-excludes: false
+            workspace-glob: "**"
+            workspace-exclude-glob: "**/*.tgz"
+

@@ -3,7 +3,7 @@
     scm:
         - workspace:
             parent-job: '{name}-checkout'
-            criteria: Any
+            criteria: any
 
 
 

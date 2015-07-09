@@ -6,3 +6,8 @@
             url: '{gitrepo}'
             branches:
                 - origin/master
+    publishers:
+        - trigger-parameterized-builds:
+            - project: '{name}-sintax'
+              current-parameters: False
+              condition: stable

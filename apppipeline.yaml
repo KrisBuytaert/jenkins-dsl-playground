@@ -2,7 +2,7 @@
     name: our-app
     jobs:
       - '{name}-checkout':
-          gitrepo: https://github.com/Inuits/jitsi-meet
+          gitrepo: 'https://github.com/Inuits/jitsi-meet'
       - '{name}-sintax':
       - '{name}-compile':
       - '{name}-unittest':

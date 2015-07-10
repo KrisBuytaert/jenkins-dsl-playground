@@ -4,7 +4,7 @@
       - jenkins-dsl-checkout:
       - jenkins-dsl-validate:
       - jenkins-dsl-update:
-    
+
 - job:
     name: jenkins-dsl-checkout
     project-type: freestyle
@@ -20,7 +20,6 @@
       - trigger:
           project: 'jenkins-dsl-validate'
 
-
 - scm:
     name: jenkins-dsl-playground
     scm:
@@ -34,12 +33,22 @@
     project-type: freestyle
     quite-period: 0
     builders:
+      - shell: |
+          # Clean workspace to avoid cruft
+          echo 'Cleaning up the workspace...'
+          rm -fr ./* || echo 'Nothing to cleanup.'
       - copyartifact:
           project: jenkins-dsl-checkout
           filter: "**"
           which-build: upstream-build
-      - shell: ./scripts/validate_yaml.sh
-      - shell: jenkins-jobs test ./
+      - shell: |
+          # Simple yaml validation routine
+          echo 'Performing YAML validation...'
+          ./scripts/validate_yaml.sh
+      - shell: |
+          # Use jenkins-jobs builtin test function
+          echo 'Running Jenkins-Jobs builtin tests...'
+          jenkins-jobs test ./
     publishers:
       - trigger:
           project: 'jenkins-dsl-update'
@@ -49,9 +58,16 @@
     project-type: freestyle
     quite-period: 0
     builders:
+      - shell: |
+          # Clean workspace to avoid cruft
+          echo 'Cleaning up the workspace...'
+          rm -fr ./* || echo 'Nothing to cleanup.'
       - copyartifact:
           project: jenkins-dsl-checkout
           filter: "**"
           which-build: upstream-build
-      - shell: jenkins-jobs update ./
+      - shell: |
+          # Update all managed Jenkins jobs
+          echo 'Updating managed jobs...'
+          jenkins-jobs update ./
 

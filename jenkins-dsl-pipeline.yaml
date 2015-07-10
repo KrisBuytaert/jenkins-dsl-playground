@@ -38,7 +38,7 @@
           project: jenkins-dsl-checkout
           filter: "**"
           which-build: upstream-build
-      - shell: ./validate_yaml.sh
+      - shell: ./scripts/validate_yaml.sh
     publishers:
       - trigger:
           project: 'jenkins-dsl-update'

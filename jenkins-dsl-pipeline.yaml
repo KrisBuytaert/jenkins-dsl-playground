@@ -39,6 +39,7 @@
           filter: "**"
           which-build: upstream-build
       - shell: ./scripts/validate_yaml.sh
+      - shell: jenkins-jobs test ./
     publishers:
       - trigger:
           project: 'jenkins-dsl-update'

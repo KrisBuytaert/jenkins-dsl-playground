@@ -4,7 +4,3 @@
        - workspace:
             parent-job: '{name}-install'
             criteria: any
-    publishers:
-        - trigger:
-            project: '{name}-package'
-            threshold: SUCCESS

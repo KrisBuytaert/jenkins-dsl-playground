@@ -14,3 +14,29 @@
             override-default-excludes: false
             workspace-glob: "**"
             workspace-exclude-glob: "**/*.tgz"
+        - email-ext:
+            recipients: kris@inuits.eu
+            reply-to: jenkins@krisbuytaert.be
+            content-type: text
+          #  subject: ${BUILD_NUMBER} has finished
+            subject:  '{name}-has finished'''
+            body: '{name}-install has installed {name} on ENVIRONMENT'
+            attach-build-log: false
+            attachments: "*/foo*.log"
+            always: true
+            unstable: true
+            first-failure: true
+            not-built: true
+            aborted: true
+            regression: true
+            failure: true
+            second-failure: true
+            improvement: true
+            still-failing: true
+            success: true
+            fixed: true
+            still-unstable: true
+            pre-build: true
+            matrix-trigger: only-configurations
+
+

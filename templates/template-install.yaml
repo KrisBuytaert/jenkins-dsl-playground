@@ -1,14 +1,12 @@
 - job-template:
-
-    name: '{name}-checkout'
+    name: '{name}-install'
     scm:
-        - git:
-            url: '{gitrepo}'
-            branches:
-                - origin/master
+       - workspace:
+            parent-job: '{name}-hostupload'
+            criteria: any
     publishers:
         - trigger:
-            project: '{name}-sintax'
+            project: '{name}-sanity'
             threshold: SUCCESS
         - clone-workspace:
             criteria: "any"

@@ -1,0 +1,6 @@
+- job-template:
+    name: '{name}-repoupload'
+    scm:
+       - workspace:
+            parent-job: '{name}-package'
+            criteria: any

@@ -1,14 +1,12 @@
 - job-template:
-
-    name: '{name}-checkout'
+    name: '{name}-unittest'
     scm:
-        - git:
-            url: '{gitrepo}'
-            branches:
-                - origin/master
+       - workspace:
+            parent-job: '{name}-compile'
+            criteria: any
     publishers:
         - trigger:
-            project: '{name}-sintax'
+            project: '{name}-package'
             threshold: SUCCESS
         - clone-workspace:
             criteria: "any"

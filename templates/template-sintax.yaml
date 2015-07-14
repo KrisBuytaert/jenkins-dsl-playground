@@ -16,28 +16,3 @@
             override-default-excludes: false
             workspace-glob: "**"
             workspace-exclude-glob: "**/*.tgz"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

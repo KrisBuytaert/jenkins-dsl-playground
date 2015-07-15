@@ -4,3 +4,13 @@
        - workspace:
             parent-job: '{name}-install'
             criteria: any
+    publishers:
+       - email-ext:
+            recipients: kris@inuits.eu
+            reply-to: jenkins@krisbuytaert.be
+            content-type: text
+          #  subject: ${BUILD_NUMBER} has finished
+            subject:  '{name}-sanity has finished'
+            body: '{name}-sanity has tested {name} on ENVIRONMENT'
+            attach-build-log: false
+            always: true
